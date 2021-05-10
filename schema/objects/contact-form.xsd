@@ -10,7 +10,7 @@
 			namespace="https://wordpress.org/data/"
 			schemaLocation="../index.xsd" />
 
-	<xs:complexType name="contactForm">
+	<xs:complexType name="contact-form">
 		<xs:complexContent>
 			<xs:extension base="wp:definedObject">
 				<xs:sequence>
@@ -132,7 +132,7 @@
 
 	<xs:element
 			name="object"
-			type="contactForm">
+			type="contact-form">
 		<xs:annotation>
 			<xs:documentation>An object for containing contact forms, along with the fields the contact form contains, and basic functionality.</xs:documentation>
 		</xs:annotation>

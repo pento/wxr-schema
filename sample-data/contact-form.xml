@@ -6,7 +6,7 @@
 		xsi:schemaLocation="https://wordpress.org/data/ ../schema/index.xsd
 			https://wordpress.org/data/objects/contact-form/ ../schema/objects/contact-form.xsd">
 
-	<wp:object xmlns="https://wordpress.org/data/objects/contact-form/" id="1">
+	<wp:object xmlns="https://wordpress.org/data/objects/contact-form/" xsi:type="contact-form" id="1">
 		<email>foo@bar.com</email>
 		<field type="select" label="wat">
 			<option value="foo">bar</option>
