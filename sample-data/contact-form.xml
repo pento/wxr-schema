@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wp:data
+		xmlns:wp="https://wordpress.org/data/"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="https://wordpress.org/data/ ../schema/index.xsd
+			https://wordpress.org/data/objects/contact-form/ ../schema/objects/contact-form.xsd">
+
+	<wp:object xmlns="https://wordpress.org/data/objects/contact-form/" id="1">
+		<email>foo@bar.com</email>
+		<field type="select" label="wat">
+			<option value="foo">bar</option>
+		</field>
+	</wp:object>
+</wp:data>

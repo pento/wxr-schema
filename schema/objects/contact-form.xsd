@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+		xmlns:wp="https://wordpress.org/data/"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="https://wordpress.org/data/objects/contact-form/"
+		targetNamespace="https://wordpress.org/data/objects/contact-form/"
+		elementFormDefault="qualified">
+
+	<xs:import
+			namespace="https://wordpress.org/data/"
+			schemaLocation="../index.xsd" />
+
+	<xs:complexType name="contactForm">
+		<xs:complexContent>
+			<xs:extension base="wp:definedObject">
+				<xs:sequence>
+					<xs:choice
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:element
+								name="email"
+								type="xs:string">
+							<xs:annotation>
+								<xs:documentation>The email address that form submissions will be sent to.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+
+					<xs:choice
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:element
+								name="field"
+								type="fieldType">
+							<xs:annotation>
+								<xs:documentation>A field within the contact form.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="fieldType">
+		<xs:sequence>
+			<xs:element
+					minOccurs="0"
+					maxOccurs="unbounded"
+					name="option">
+				<xs:annotation>
+					<xs:documentation>An option in a select field.</xs:documentation>
+				</xs:annotation>
+
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute
+									name="value"
+									type="xs:string"
+									use="optional">
+								<xs:annotation>
+									<xs:documentation>An optional value for the select field option.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute
+				name="type"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>The type of field this is.</xs:documentation>
+			</xs:annotation>
+
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="text" />
+					<xs:enumeration value="select" />
+					<xs:enumeration value="textarea" />
+					<xs:enumeration value="submit" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+
+		<xs:attribute
+				name="format"
+				use="optional">
+			<xs:annotation>
+				<xs:documentation>When type is set to 'text', it can have an optional format.</xs:documentation>
+			</xs:annotation>
+
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="date" />
+					<xs:enumeration value="email" />
+					<xs:enumeration value="phone-number" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+
+		<xs:attribute
+				name="label"
+				type="xs:string"
+				use="required">
+			<xs:annotation>
+				<xs:documentation>The label for this field.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute
+				name="placeholder"
+				type="xs:string"
+				use="optional">
+			<xs:annotation>
+				<xs:documentation>The placeholder text for this field.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+
+		<xs:attribute
+				name="required"
+				type="xs:boolean"
+				use="optional">
+			<xs:annotation>
+				<xs:documentation>Whether or not this field must be filled out.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+
+	<xs:element
+			name="object"
+			type="contactForm">
+		<xs:annotation>
+			<xs:documentation>An object for containing contact forms, along with the fields the contact form contains, and basic functionality.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+
+</xs:schema>
